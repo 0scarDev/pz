@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">PZ</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Logistics -->
+    <string name="main_title">PZ</string>
+    <string name="version_mark">Version: </string>
+    <string name="version_num">1.0.0</string>
+
+    <!-- Authentication Screen -->
+    <string name="auth_title">Device Authentication</string>
+    <string name="auth_prompt_00">Authenticate the device</string>
+    <string name="auth_prompt_01">to proceed.</string>
+    <string name="auth_prompt_02">Authenticate the\ndevice to proceed.</string>
+    <string name="auth_enter">Authenticate</string>
+    <string name="auth_scan_qr">Scan QR</string>
+
+    <!-- Main Screen -->
+    <string name="main_clock">Clock Selection</string>
+    <string name="main_speed">Speed</string>
+
+    <!-- Fragment Panel -->
+    <string name="frag_clock">Clock</string>
+    <string name="frag_setting">Setting</string>
+
+</resources>

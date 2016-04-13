@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/main_button_000_b"
+        android:color="#d1f4ca"
+        android:state_pressed="true" />
+    <item android:drawable="@drawable/main_button_000_b"
+        android:color="#d1f4ca"
+        android:state_focused="true" />
+    <item android:drawable="@drawable/main_button_000_a"
+        android:color="#1f5e12" />
+</selector>

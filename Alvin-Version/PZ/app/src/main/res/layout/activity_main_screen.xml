@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="portrait"
+    android:orientation="vertical"
+    android:gravity="top|center"
+    android:background="#e5fde0"
+    android:id="@+id/main_activity">
+
+        <TextView
+            android:id="@+id/main_title"
+            android:text="@string/main_title"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="50dp"
+            android:gravity="top"
+            android:textColor="#1f5e12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/auth_prompt"
+            android:text="@string/auth_prompt_02"
+            android:layout_marginTop="30dp"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:textColor="#1f5e12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/button_authen"
+            android:layout_marginTop="15dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textColor="#1f5e12"
+            android:onClick="onAuthenticate"
+            android:background="@drawable/main_button_000_a"
+            android:text="@string/auth_enter" />
+
+        <Button
+            android:id="@+id/button_qr"
+            android:layout_marginTop="15dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textColor="#1f5e12"
+            android:onClick="onScanQR"
+            android:background="@drawable/main_button_000_a"
+            android:text="@string/auth_scan_qr" />
+
+</LinearLayout>
