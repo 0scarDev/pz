@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Project Z : Smart blinds manipulation and automation">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Project Z</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/ocawa/pz">View on GitHub</a>
+
+          <h1 id="project_title">Project Z</h1>
+          <h2 id="project_tagline">Smart blinds manipulation and automation</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="problem" class="anchor" href="#problem" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problem</h1>
+
+<ol>
+<li>Sleepiness Causes Accidents</li>
+<li>Sleep Loss Dumbs You Down</li>
+<li>Sleep Deprivation Can Lead to Serious Health Problems
+    <ul>
+<li>Heart disease, heart attack, heart failure, irregular heart beat</li>
+<li>High blood pressure,</li>
+<li>Stroke</li>
+<li>Diabetes</li>
+<li>Death (very bad for health)</li></ul></li>
+<li>Lack of Sleep Kills Sex Drive</li>
+<li>The most common sleep disorder, insomnia, has the strongest link to depression</li>
+<li>Lack of Sleep Ages Your Skin</li>
+<li>Sleepiness Makes You Forgetful</li>
+<li>Losing Sleep Can Make You Gain Weight</li>
+<li>Lack of sleep correlated with earlier death</li>
+<li>Sleep Loss Impairs Judgment, Especially About Sleep</li>
+</ol>
+
+<p><a href="https://www.google.com/url?q=http://www.webmd.com/sleep-disorders/excessive-sleepiness-10/10-results-sleep-loss&amp;amp;sa=D&amp;amp;ust=1461265979238000&amp;amp;usg=AFQjCNHUBcWj9v8tCI8Hq3T5ajYHboRRdg">list of sources</a>, there are of course more detrimental things about less sleep</p>
+
+<p> </p>
+
+<h1>
+<a id="background" class="anchor" href="#background" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Background</h1>
+
+<p>Getting more sleep has been something that I've been obsessed with over for the last 5 years. I used to get around 4 hours of sleep each night, go to class, fall asleep during lecture and then shuffle along until the next day for 2 years. I realized that getting only 4 hours of sleep a night but then living the next 20 hours on 50% was actually a net loss in consciousness. I'd rather approach the lifestyle where I slept for 8 and had 100% consciousness for the other 16 hours in the day. So I went on a massive binge on science journals and nearly exhausted every resource on the internet about sleep hygiene. One thing that I had no control over that had a significant impact on sleep hygiene was the sun.</p>
+
+<p> </p>
+
+<hr>
+
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+
+<p>Spending long periods of time in bed isn't a great indicator of how good one sleeps. For example if someone spends 8 hours in bed but only sleeps for 6 hours, they have a 75% efficiency. The goal of this project is to push this efficiency to approach 100% by optimizing the determinants that we cannot control.</p>
+
+<p> </p>
+
+<p>In sleep science there is a term called zeitbergers (PZ = project zeitberger), which are parameters that significantly affect every human's sleep/wake cycle, popularly known as the circadian rhythm. This device will allow humans to optimize the biggest, most significant factor in our sleep/wake cycle, light.</p>
+
+<p> </p>
+
+<p>When we go to sleep at night we all face a choice: to close or not close the blinds. Both choices have their advantages and disadvantages. Closing the blinds blocks all the ambient light that seeps into our bedrooms at night, which is crucial for falling asleep quickly but does nothing for helping us get up in the morning since we have no natural light. Opening the blinds lets in sunlight in the morning, which is crucial for waking up quickly and well rested in the morning but does nothing for helping us fall asleep at night since ambient light will still be present. We normally cannot have both positive sides.</p>
+
+<p> </p>
+
+<p>My project will combine the best of both options in an automated, smart-phone app driven, alarm-clock or Google Calendar integrated, and bluetooth/wifi enabled machine (an internet-of-things project). The machine will be lightweight since the display, logic, and memory are all hosted on the phone. The machine should be modular, to be compatible with all possible blinds: twisters, horizontal sliders, vertical sliders, and whatever else may come about (since we only have 10 weeks, we could just implement the most popular mechanic: the vertical twisty twisty. The complementary app will have features that allow blinds to be closed half way for mood lighting or close slowly over the course of x hours, and more. Remember this project isn't just for improving the sleep hygiene of those with smartphones. This could also be implemented in hospitals in classrooms to automatically dim the blinds, or in office buildings after closing hours.</p>
+
+<p> </p>
+
+<p>Below are the recommendations I have for this project and of course they're open to discussion :)</p>
+
+<hr>
+
+<h1>
+<a id="implementation" class="anchor" href="#implementation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Implementation</h1>
+
+<h2>
+<a id="software" class="anchor" href="#software" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Software</h2>
+
+<ol>
+    <li>Website w/database - allows us every smart device to access the settings. It allows for each machine to have a centralized storage for settings so multiple people can change it. Here are my initial recommendations based on new trending technologies.<ul>
+<li>Backend: Cockroach DB if it gets released soon</li>
+<li>Front end: Material design lite + polymer, or Angular 2 material + polymer</li></ul></li>
+    <li>Android app - if time allows since it's free to publish and android app (iOS too if we have enough people who want to).<ul>
+            <li>Java is standard but there is a <a href="https://www.google.com/url?q=http://developer.android.com/tools/sdk/ndk/index.html&amp;amp;sa=D&amp;amp;ust=1461265979251000&amp;amp;usg=AFQjCNFVgurIitst7DkryigvDzBiI9fhhQ">c/c++</a> option available to us as well.</li></ul></li>
+</ol>
+
+<h2>
+<a id="hardware" class="anchor" href="#hardware" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hardware</h2>
+
+<ol>
+<li>
+<a href="https://www.google.com/url?q=http://onion.io/&amp;amp;sa=D&amp;amp;ust=1461265979252000&amp;amp;usg=AFQjCNFQHb1sAnGvKEl49Gt-5065ejOJgg">Onion</a> - Specifically designed for Internet of Things (IoT) projects</li>
+<li>Open to suggestions such as arduino, rasberry pi, orange pi, particle proton, chip</li>
+<li>Custom board, AVR chip</li>
+</ol>
+
+<h2>
+<a id="designbranding" class="anchor" href="#designbranding" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Design/Branding</h2>
+
+<ol>
+<li>Designing the user interface for the software</li>
+<li>Designing the case that holds our hardware</li>
+<li>Logo design</li>
+<li>Making a video to promote the device. A <a href="https://www.google.com/url?q=https://www.youtube.com/watch?v%3DxZbcwi7SfZE&amp;amp;sa=D&amp;amp;ust=1461265979281000&amp;amp;usg=AFQjCNFDBwdxVqNAnmIXHdjwGHAO10t_aw">good video</a> with non-stock animation takes many hours to make.</li>
+</ol>
+
+<p> </p>
+
+<hr>
+
+<h1>
+<a id="teams" class="anchor" href="#teams" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teams</h1>
+
+<h2>
+<a id="software-1" class="anchor" href="#software-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Software</h2>
+
+<p>Han</p>
+
+<p>Oscar</p>
+
+<p>Diego ( wong )</p>
+
+<p>Pedro C</p>
+
+<p>XiaoXiao</p>
+
+<p>Tom</p>
+
+<p>Alvin</p>
+
+<h2>
+<a id="hardware-1" class="anchor" href="#hardware-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hardware</h2>
+
+<p>Yabo</p>
+
+<p>Steven</p>
+
+<p>Oscar</p>
+
+<p>Barry</p>
+
+<p>Michael</p>
+
+<h2>
+<a id="designbranding-1" class="anchor" href="#designbranding-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Design/Branding</h2>
+
+<p>Oscar</p>
+
+<p>Steven</p>
+
+<p>Jerry</p>
+      </section>
+    </div>
+
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+    <p><a href="https://github.com/ocawa/pz">Link to project GitHub with
+        internal documentation wiki</a></p>
+        <p class="copyright">Project Z maintained by <a href="https://github.com/pcoutin">pcoutin</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
