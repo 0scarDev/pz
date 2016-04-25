@@ -1,6 +1,7 @@
 package com.pz.cse145.pz;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -81,5 +82,13 @@ public class MainScreen extends Activity {
 
         // Test Message
         Toast.makeText(getApplicationContext(), "Under Construction", Toast.LENGTH_SHORT).show();
+    }
+
+    // Demo Graphics
+    public void onDemo(View v){
+
+        // Go to Design Demo Screen
+        Intent intent = new Intent(getBaseContext(), DesignScreen.class);
+        startActivity(intent);
     }
 }

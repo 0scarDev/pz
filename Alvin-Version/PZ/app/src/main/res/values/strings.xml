@@ -9,6 +9,13 @@
     <string name="version_mark">Version: </string>
     <string name="version_num">1.0.0</string>
 
+    <string name="design_000">Profile</string>
+    <string name="design_001">Schedule</string>
+    <string name="design_002">Settings</string>
+
+    <string name="design_003">Auto</string>
+    <string name="design_004">Manual</string>
+
     <!-- Authentication Screen -->
     <string name="auth_title">Device Authentication</string>
     <string name="auth_prompt_00">Authenticate the device</string>
@@ -17,12 +24,30 @@
     <string name="auth_enter">Authenticate</string>
     <string name="auth_scan_qr">Scan QR</string>
 
+    <string name="auth_demo">Demo Screen</string>
+
     <!-- Main Screen -->
     <string name="main_clock">Clock Selection</string>
     <string name="main_speed">Speed</string>
 
+    <string name="clock_wise">Clock-Wise</string>
+    <string name="clock_counter">Counter Clock</string>
+
     <!-- Fragment Panel -->
     <string name="frag_clock">Clock</string>
     <string name="frag_setting">Setting</string>
+    <string name="title_activity_design_screen">DesignScreen</string>
+
+    <string-array name="navigation_drawer_items_array">
+        <item>Configure</item>
+        <item>Manage</item>
+        <item>Settings</item>
+    </string-array>
+
+    <string name="drawer_000">Configure</string>
+    <string name="drawer_001">Manage</string>
+    <string name="drawer_002">Settings</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 
 </resources>
