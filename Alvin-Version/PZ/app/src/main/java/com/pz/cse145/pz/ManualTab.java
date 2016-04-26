@@ -104,9 +104,7 @@ public class ManualTab extends Fragment implements View.OnClickListener {
                     Toast.LENGTH_LONG).show();
         }
         // Starting the device discovery
-        Toast.makeText(getContext(), "Starting discovery.", Toast.LENGTH_LONG).show();
         adapter.startDiscovery();
-        Toast.makeText(getContext(), "Done with discovery.", Toast.LENGTH_LONG).show();
         // Listing paired devices
         Set<BluetoothDevice> devices = adapter.getBondedDevices();
         for (BluetoothDevice device : devices) {
