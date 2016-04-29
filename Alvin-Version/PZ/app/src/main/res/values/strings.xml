@@ -33,6 +33,7 @@
     <string name="clock_wise">Clock-Wise</string>
     <string name="clock_counter">Counter Clock</string>
 
+    <string name="bluetooth_switch">Bluetooth Switch</string>
     <string name="bluetooth_scan">Bluetooth Scan</string>
 
     <!-- Fragment Panel -->
