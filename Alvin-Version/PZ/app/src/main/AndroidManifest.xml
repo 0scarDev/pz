@@ -26,8 +26,12 @@
         </activity>
         <activity
             android:name=".DesignScreen"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_design_screen" >
+            android:label="@string/title_activity_design_screen"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".BluetoothScanner"
+            android:label="@string/title_activity_bluetooth_scanner" >
         </activity>
     </application>
 

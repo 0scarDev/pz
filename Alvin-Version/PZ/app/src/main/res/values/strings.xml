@@ -36,6 +36,8 @@
     <string name="bluetooth_switch">Bluetooth Switch</string>
     <string name="bluetooth_scan">Bluetooth Scan</string>
 
+    <string name="wifi_scan">Wi-fi Scan</string>
+
     <!-- Fragment Panel -->
     <string name="frag_clock">Clock</string>
     <string name="frag_setting">Setting</string>
@@ -52,5 +54,16 @@
     <string name="drawer_002">Settings</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+
+    <!-- Bluetooth Popup -->
+    <string name="bluetooth_000">Bluetooth Scan</string>
+    <string name="bluetooth_001">Failed to find any Bluetooth devices nearby.\nPlease try again.</string>
+    <string name="bluetooth_002">Close</string>
+
+    <string name="bluetooth_003">Scanning for devices...\nPlease wait.</string>
+
+    <string name="bluetooth_004"></string>
+    <string name="bluetooth_005"></string>
+    <string name="title_activity_bluetooth_scanner">BluetoothScanner</string>
 
 </resources>

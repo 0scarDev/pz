@@ -4,7 +4,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -12,12 +11,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import pz.functions.BluetoothConnector;
@@ -28,13 +27,11 @@ public class ManualTab extends Fragment implements View.OnClickListener {
     private BluetoothAdapter adapter;
     BluetoothConnector connector;
 
-    private BluetoothAdapter adapterScan;
     private BroadcastReceiver recieverScan;
-    private ArrayAdapter arrayAdapter;
-    private String[] arrayDevice = new String[] {};
-    //ListView listView;
 
     private SeekBar speedControl = null;
+    ArrayList<String> deviceName;
+    ArrayList<String> deviceAddress;
 
     public ManualTab() {
         // Required empty public constructor
@@ -45,12 +42,10 @@ public class ManualTab extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
 
         connector = new BluetoothConnector(getContext());
+        deviceName = new ArrayList<String>();
+        deviceAddress = new ArrayList<String>();
 
         View view = inflater.inflate(R.layout.tab_manual, container, false);
-
-        arrayAdapter = new ArrayAdapter<>(getContext(), R.layout.tab_manual, arrayDevice);
-        //listView = (ListView) view.findViewById(R.id.device_list);
-        //listView.setAdapter(arrayAdapter);
 
         Button button_00 = (Button) view.findViewById(R.id.button_clock);
         button_00.setOnClickListener(this);
@@ -58,7 +53,7 @@ public class ManualTab extends Fragment implements View.OnClickListener {
         button_01.setOnClickListener(this);
         Button button_02 = (Button) view.findViewById(R.id.button_scan);
         button_02.setOnClickListener(this);
-        Button button_03 = (Button) view.findViewById(R.id.button_switch);
+        Button button_03 = (Button) view.findViewById(R.id.wifi_scan);
         button_03.setOnClickListener(this);
 
         // Inflate the layout for this fragment
@@ -74,39 +69,30 @@ public class ManualTab extends Fragment implements View.OnClickListener {
             case R.id.button_counter:
                 Toast.makeText(getContext(), "Counter Clock", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.button_switch:
+            case R.id.button_scan:
                 setBluetoothData();
                 if (connector.blueTooth()) {
                     Intent enableBtIntent = new Intent(
                             BluetoothAdapter.ACTION_REQUEST_ENABLE);
                     startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
                 }
-                break;
-            case R.id.button_scan:
-                adapterScan = BluetoothAdapter.getDefaultAdapter();
-                if (adapter == null) {
-                    Toast.makeText(getContext(), "Bluetooth NOT supported. Aborting.",
-                            Toast.LENGTH_LONG).show();
+                if (deviceAddress.size() > 0){
+                    // Go to the Bluetooth Listing Page for Connection
+                    //Toast.makeText(getContext(), "TEST: " + deviceName.size() + " " + deviceAddress.size(), Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), BluetoothScanner.class);
+                    intent.putStringArrayListExtra("deviceName", (ArrayList<String>) deviceName);
+                    intent.putStringArrayListExtra("deviceAddress", (ArrayList<String>) deviceAddress);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), "No Bluetooth devices detected.", Toast.LENGTH_LONG).show();
                 }
-                adapterScan.startDiscovery();
-                recieverScan = new BroadcastReceiver() {
-                    public void onReceive(Context context, Intent intent) {
-                        String action = intent.getAction();
-                        //Finding devices
-                        if (BluetoothDevice.ACTION_FOUND.equals(action))
-                        {
-                            // Get the BluetoothDevice object from the Intent
-                            BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                            // Add the name and address to an array adapter to show in a ListView
-                            Toast.makeText(getContext(), device.getName() + "\n" + device.getAddress(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                };
-
-                IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-                getContext().registerReceiver(recieverScan, filter);
-
-                //listView.setAdapter(arrayAdapter);
+                // Clear Device Listing
+                deviceName = new ArrayList<String>();
+                deviceAddress = new ArrayList<String>();
+                //Toast.makeText(getContext(), "TEST: " + deviceName.size() + " " + deviceAddress.size(), Toast.LENGTH_LONG).show();
+                break;
+            case R.id.wifi_scan:
+                Toast.makeText(getContext(), "Under Construction", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -121,9 +107,6 @@ public class ManualTab extends Fragment implements View.OnClickListener {
     private void setBluetoothData() {
         // Getting the Bluetooth adapter
         adapter = BluetoothAdapter.getDefaultAdapter();
-        Toast.makeText(getContext(), "Adapter: " + adapter.toString() + "\n\nName: "
-                + adapter.getName() + "\nAddress: " + adapter.getAddress(), Toast.LENGTH_LONG).show();
-        // Check for Bluetooth support in the first place
         // Emulator doesn't support Bluetooth and will return null
         if (adapter == null) {
             Toast.makeText(getContext(), "Bluetooth NOT supported. Aborting.",
@@ -131,6 +114,25 @@ public class ManualTab extends Fragment implements View.OnClickListener {
         }
         // Starting the device discovery
         adapter.startDiscovery();
+
+        // Scan for nearby devices
+        recieverScan = new BroadcastReceiver() {
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                //Finding devices
+                if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                    // Get the BluetoothDevice object from the Intent
+                    BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                    // Add the name and address to an array adapter to show in a ListView
+                    deviceName.add(device.getName());
+                    deviceAddress.add(device.getAddress());
+                }
+            }
+        };
+
+        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+        getContext().registerReceiver(recieverScan, filter);
+
         // Listing paired devices
         Set<BluetoothDevice> devices = adapter.getBondedDevices();
         for (BluetoothDevice device : devices) {

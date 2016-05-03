@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top"
+    android:id="@+id/popup_bluetooth_empty"
+    android:background="@drawable/pz_popup_002">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_gravity="left"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="105dp"
+        android:layout_marginLeft="30dp"
+        android:textSize="38dp"
+        android:textColor="#FFFFFF"
+        android:text="@string/bluetooth_000" />
+
+    <ScrollView
+        android:layout_width="275dp"
+        android:layout_height="125dp"
+        android:layout_gravity="left"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="60dp">
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="#FFFFFF"
+        android:text="@string/bluetooth_001" />
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/blue_empty_close"
+        android:layout_marginTop="15dp"
+        android:layout_width="175dp"
+        android:layout_height="65dp"
+        android:textSize="30dp"
+        android:layout_gravity="bottom|center"
+        android:text="@string/bluetooth_002" />
+
+
+</LinearLayout>
