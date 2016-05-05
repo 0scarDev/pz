@@ -41,7 +41,7 @@
     <!-- Fragment Panel -->
     <string name="frag_clock">Clock</string>
     <string name="frag_setting">Setting</string>
-    <string name="title_activity_design_screen">DesignScreen</string>
+    <string name="title_activity_design_screen">PZ Menu</string>
 
     <string-array name="navigation_drawer_items_array">
         <item>Configure</item>
@@ -62,8 +62,32 @@
 
     <string name="bluetooth_003">Scanning for devices...\nPlease wait.</string>
 
-    <string name="bluetooth_004"></string>
+    <string name="bluetooth_004">(No Name)</string>
     <string name="bluetooth_005"></string>
-    <string name="title_activity_bluetooth_scanner">BluetoothScanner</string>
+    <string name="title_activity_bluetooth_scanner">Bluetooth Scanner</string>
+
+    <string name="connect_000">Connect Device</string>
+    <string name="connect_001">Close</string>
+    <string name="connect_002">Connect</string>
+    <string name="connect_003">Connecting to the device </string>
+    <string name="connect_004">.\nProceed with the connection?</string>
+
+    <string name="title_activity_control_panel">PZ Control Panel</string>
+    <string name="element_000">Bluetooth</string>
+    <string name="element_001">Wi-fi</string>
+    <string name="element_002">QR Code</string>
+    <string name="element_003">Unknown</string>
+
+    <string name="control_000">Test</string>
+    <string name="control_001">Test</string>
+    <string name="control_002">Test</string>
+    <string name="control_003">Test</string>
+
+    <string name="command_label">PZ Command Log</string>
+    <string name="command_log">Connecting...</string>
+    <string name="command_000">\nConnected successfully to </string>
+    <string name="command_001">\nCommand 1:</string>
+    <string name="command_002">\nCommand 2:</string>
+    <string name="command_003">\nCommand 3:</string>
 
 </resources>

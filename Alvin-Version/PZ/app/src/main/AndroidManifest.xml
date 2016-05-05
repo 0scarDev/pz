@@ -31,7 +31,13 @@
         </activity>
         <activity
             android:name=".BluetoothScanner"
-            android:label="@string/title_activity_bluetooth_scanner" >
+            android:label="@string/title_activity_bluetooth_scanner"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ControlPanel"
+            android:label="@string/title_activity_control_panel"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

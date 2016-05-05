@@ -1,13 +1,24 @@
 package com.pz.cse145.pz;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -22,8 +33,13 @@ public class BluetoothScanner extends AppCompatActivity {
     ArrayList<String> deviceName;
     ArrayList<String> deviceAddress;
     ArrayList<BluetoothInfo> deviceListing;
+    String nameHolder;
+    String addressHolder;
 
     ListView displayDevices;
+
+    PopupWindow connectionPopup;
+    TextView text_00;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +57,13 @@ public class BluetoothScanner extends AppCompatActivity {
         }
 
         deviceListing = new ArrayList<BluetoothInfo>();
+
+        // Clear any NULL variables
+        for(int position = 0; position < deviceName.size(); position++){
+            if(deviceName.get(position).equals(null)){
+                deviceName.set(position, this.getString(R.string.bluetooth_004));
+            }
+        }
 
         // Transfer data into the ArrayList<BluetoothInfo>
         for(int position = 0; position < deviceAddress.size(); position++){
@@ -74,10 +97,42 @@ public class BluetoothScanner extends AppCompatActivity {
             // argument position gives the index of item which is clicked
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
                 // CONNECTION HERE
-                Toast.makeText(getApplicationContext(), "Device Name: " + deviceName.get(position)
-                        + "\nIP Address: " + deviceAddress.get(position), Toast.LENGTH_LONG).show();
+                BluetoothInfo baseInfo = deviceListing.get(position);
+                nameHolder = baseInfo.deviceName;
+                addressHolder = baseInfo.deviceAddress;
+                Toast.makeText(getApplicationContext(), "Device Name: " + nameHolder
+                        + "\nDevice Address: " + addressHolder, Toast.LENGTH_LONG).show();
+                popUpConnection();
             }
         });
+    }
+
+    // Pop-up for Connection
+    public void popUpConnection(){
+        DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
+        int screenHeight = metrics.heightPixels;
+        int screenWidth = metrics.widthPixels;
+
+        LayoutInflater inflater = (LayoutInflater) BluetoothScanner.this.
+                getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.popup_connector, (ViewGroup) findViewById(R.id.popup_connector));
+        connectionPopup = new PopupWindow(layout, screenWidth, screenHeight, true);
+        connectionPopup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+        text_00 = (TextView) connectionPopup.getContentView().findViewById(R.id.text_00);
+        text_00.setText(this.getString(R.string.connect_003)
+                + nameHolder + getBaseContext().getString(R.string.connect_004));
+    }
+    public void onConnectClose(View v){
+        connectionPopup.dismiss();
+    }
+    public void onConnectProceed(View v){
+        connectionPopup.dismiss();
+        // Go to connection page
+        Intent intent = new Intent(this, ControlPanel.class);
+        intent.putExtra("deviceName", nameHolder);
+        intent.putExtra("deviceAddress", addressHolder);
+        intent.putExtra("connectType", 0);
+        startActivity(intent);
     }
 
     @Override

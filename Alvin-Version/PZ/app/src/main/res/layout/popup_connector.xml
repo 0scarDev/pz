@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top"
+    android:id="@+id/popup_connector"
+    android:background="@drawable/pz_popup_003" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_gravity="left"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="105dp"
+        android:layout_marginLeft="50dp"
+        android:textSize="35dp"
+        android:textColor="#FFFFFF"
+        android:text="@string/connect_000" />
+
+    <ScrollView
+        android:layout_width="262dp"
+        android:layout_height="110dp"
+        android:layout_gravity="left"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="63dp">
+
+        <TextView
+            android:id="@+id/text_00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:textColor="#FFFFFF"
+            android:text="@string/connect_003" />
+
+    </ScrollView>
+
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <Button
+            android:id="@+id/connect_close"
+            android:layout_width="150dp"
+            android:layout_height="55dp"
+            android:textSize="22dp"
+            android:layout_gravity="bottom|center"
+            android:onClick="onConnectClose"
+            android:text="@string/connect_001" />
+
+        <Button
+            android:id="@+id/connect_proceed"
+            android:layout_width="150dp"
+            android:layout_height="55dp"
+            android:textSize="22dp"
+            android:layout_gravity="bottom|center"
+            android:onClick="onConnectProceed"
+            android:text="@string/connect_002" />
+
+    </TableRow>
+
+</LinearLayout>
