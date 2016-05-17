@@ -59,11 +59,11 @@ public class BluetoothScanner extends AppCompatActivity {
         deviceListing = new ArrayList<BluetoothInfo>();
 
         // Clear any NULL variables
-        for(int position = 0; position < deviceName.size(); position++){
-            if(deviceName.get(position).equals(null)){
+        /*for(int position = 0; position < deviceName.size(); position++){
+            if(deviceName.get(position).equals("")){
                 deviceName.set(position, this.getString(R.string.bluetooth_004));
             }
-        }
+        }*/
 
         // Transfer data into the ArrayList<BluetoothInfo>
         for(int position = 0; position < deviceAddress.size(); position++){
@@ -119,7 +119,7 @@ public class BluetoothScanner extends AppCompatActivity {
         connectionPopup = new PopupWindow(layout, screenWidth, screenHeight, true);
         connectionPopup.showAtLocation(layout, Gravity.CENTER, 0, 0);
         text_00 = (TextView) connectionPopup.getContentView().findViewById(R.id.text_00);
-        text_00.setText(this.getString(R.string.connect_003)
+        text_00.setText(this.getString(R.string.connect_003) + " "
                 + nameHolder + getBaseContext().getString(R.string.connect_004));
     }
     public void onConnectClose(View v){

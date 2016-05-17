@@ -4,7 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ControlPanel extends AppCompatActivity {
 
@@ -38,6 +40,23 @@ public class ControlPanel extends AppCompatActivity {
         }
         text_001.setText(deviceName);
         text_002.setText(deviceAddress);
+    }
+
+    // OnClick Buttons for the Control
+    public void onButton_000(View v){
+        Toast.makeText(getApplicationContext(), "Transmitting 0" , Toast.LENGTH_LONG).show();
+    }
+    public void onButton_001(View v){
+        Toast.makeText(getApplicationContext(), "Transmitting 1" , Toast.LENGTH_LONG).show();
+    }
+    public void onButton_002(View v){
+        Toast.makeText(getApplicationContext(), "Transmitting 2" , Toast.LENGTH_LONG).show();
+    }
+    public void onButton_003(View v){
+        Toast.makeText(getApplicationContext(), "Transmitting 3" , Toast.LENGTH_LONG).show();
+    }
+    public void onButton_004(View v){
+        Toast.makeText(getApplicationContext(), "Transmitting 4" , Toast.LENGTH_LONG).show();
     }
 
     @Override

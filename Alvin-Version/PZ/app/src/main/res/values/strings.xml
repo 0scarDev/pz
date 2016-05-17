@@ -83,11 +83,29 @@
     <string name="control_002">Test</string>
     <string name="control_003">Test</string>
 
+    <string name="button_000">0</string>
+    <string name="button_001">1</string>
+    <string name="button_002">2</string>
+    <string name="button_003">3</string>
+    <string name="button_004">4</string>
+
     <string name="command_label">PZ Command Log</string>
     <string name="command_log">Connecting...</string>
     <string name="command_000">\nConnected successfully to </string>
+    <string name="command_000a">Bluetooth device: </string>
+    <string name="command_000b">Wi-fi device: </string>
     <string name="command_001">\nCommand 1:</string>
     <string name="command_002">\nCommand 2:</string>
     <string name="command_003">\nCommand 3:</string>
+
+    <string name="destination_device">sophie</string>
+
+    <string name="button_disconnect">Disconnect</string>
+
+    <string name="button_005">Auto-Left</string>
+    <string name="button_006">Stop</string>
+    <string name="button_007">Auto-Right</string>
+    <string name="button_008">Manual Left</string>
+    <string name="button_009">Manual Right</string>
 
 </resources>
