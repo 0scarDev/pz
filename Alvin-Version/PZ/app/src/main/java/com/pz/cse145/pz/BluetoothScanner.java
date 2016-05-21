@@ -26,6 +26,7 @@ import java.util.List;
 
 import pz.functions.BluetoothInfo;
 import pz.functions.BluetoothScanAdapter;
+import pz.functions.PZLibrary;
 
 public class BluetoothScanner extends AppCompatActivity {
 
@@ -35,6 +36,7 @@ public class BluetoothScanner extends AppCompatActivity {
     ArrayList<BluetoothInfo> deviceListing;
     String nameHolder;
     String addressHolder;
+    PZLibrary library;
 
     ListView displayDevices;
 
@@ -57,6 +59,7 @@ public class BluetoothScanner extends AppCompatActivity {
         }
 
         deviceListing = new ArrayList<BluetoothInfo>();
+        library = new PZLibrary();
 
         // Clear any NULL variables
         /*for(int position = 0; position < deviceName.size(); position++){
@@ -102,7 +105,16 @@ public class BluetoothScanner extends AppCompatActivity {
                 addressHolder = baseInfo.deviceAddress;
                 Toast.makeText(getApplicationContext(), "Device Name: " + nameHolder
                         + "\nDevice Address: " + addressHolder, Toast.LENGTH_LONG).show();
-                popUpConnection();
+                // popUpConnection();
+                if(library.pzDeviceCheck(nameHolder, addressHolder)){
+                    Intent intent = new Intent(getApplicationContext(), ControlPanel.class);
+                    intent.putExtra("deviceName", nameHolder);
+                    intent.putExtra("deviceAddress", addressHolder);
+                    intent.putExtra("connectType", 0);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Unrecognized Device.", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
