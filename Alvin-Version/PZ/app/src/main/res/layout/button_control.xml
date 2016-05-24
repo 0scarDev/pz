@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top">
+
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center" >
+
+        <Button
+            android:layout_width="175dp"
+            android:layout_height="80dp"
+            android:text="@string/button_005"
+            android:id="@+id/button_00"
+            android:onClick="onButton_00" />
+
+        <Button
+            android:layout_width="175dp"
+            android:layout_height="80dp"
+            android:text="@string/button_007"
+            android:id="@+id/button_01"
+            android:onClick="onButton_01" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center" >
+
+        <Button
+            android:layout_width="175dp"
+            android:layout_height="80dp"
+            android:text="@string/button_006"
+            android:id="@+id/button_02"
+            android:onClick="onButton_02" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center" >
+
+        <Button
+            android:layout_width="175dp"
+            android:layout_height="80dp"
+            android:text="@string/button_008"
+            android:id="@+id/button_03"
+            android:onClick="onButton_03" />
+
+        <Button
+            android:layout_width="175dp"
+            android:layout_height="80dp"
+            android:text="@string/button_009"
+            android:id="@+id/button_04"
+            android:onClick="onButton_04" />
+
+    </TableRow>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_data"
+        android:id="@+id/data_value" />
+
+    <Button
+        android:id="@+id/button_connect"
+        android:layout_width="175dp"
+        android:layout_height="60dp"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:onClick="onButton_Connection"
+        android:text="@string/menu_connect" />
+
+</LinearLayout>

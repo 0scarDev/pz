@@ -35,6 +35,8 @@
 
     <string name="bluetooth_switch">Bluetooth Switch</string>
     <string name="bluetooth_scan">Bluetooth Scan</string>
+    <string name="bluetooth_scan_000">sophie Bluetooth</string>
+    <string name="bluetooth_scan_001">HM-10 Bluetooth</string>
 
     <string name="wifi_scan">Wi-fi Scan</string>
 
@@ -101,11 +103,29 @@
     <string name="destination_device">sophie</string>
 
     <string name="button_disconnect">Disconnect</string>
+    <string name="button_connect">Connect</string>
 
-    <string name="button_005">Auto-Left</string>
+    <string name="button_005">Auto Left</string>
     <string name="button_006">Stop</string>
-    <string name="button_007">Auto-Right</string>
+    <string name="button_007">Auto Right</string>
     <string name="button_008">Manual Left</string>
     <string name="button_009">Manual Right</string>
+
+    <string name="button_010">-</string>
+    <string name="button_011">+</string>
+    <string name="speed_level">Speed: </string>
+
+    <string name="title_activity_sophie_btcontrol">sophie Bluetooth</string>
+    <string name="title_activity_device_scan">DeviceScanActivity</string>
+    <string name="title_activity_device_control">DeviceControlActivity</string>
+    <string name="title_activity_second_device_control">SecondDeviceControlActivity</string>
+    <string name="title_activity_second_device_scan">SecondDeviceScanActivity</string>
+    <string name="title_activity_tethercell">TethercellActivity</string>
+    <string name="title_activity_service">ServiceActivity</string>
+    <string name="title_activity_hm10">HM10Activity</string>
+    <string name="title_activity_sensor_tag">SensorTagActivity</string>
+    <string name="title_activity_control_light">ControlLightActivity</string>
+    <string name="title_activity_bleduino_uart">BLEduinoUartActivity</string>
+    <string name="title_activity_device">DeviceActivity</string>
 
 </resources>

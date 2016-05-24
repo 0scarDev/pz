@@ -70,26 +70,8 @@ public class ManualTab extends Fragment implements View.OnClickListener {
                 Toast.makeText(getContext(), "Counter Clock", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.button_scan:
-                setBluetoothData();
-                if (connector.blueTooth()) {
-                    Intent enableBtIntent = new Intent(
-                            BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                    startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-                }
-                if (deviceAddress.size() > 0){
-                    // Go to the Bluetooth Listing Page for Connection
-                    //Toast.makeText(getContext(), "TEST: " + deviceName.size() + " " + deviceAddress.size(), Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getContext(), BluetoothScanner.class);
-                    intent.putStringArrayListExtra("deviceName", (ArrayList<String>) deviceName);
-                    intent.putStringArrayListExtra("deviceAddress", (ArrayList<String>) deviceAddress);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(getContext(), "No Bluetooth devices detected.", Toast.LENGTH_LONG).show();
-                }
-                // Clear Device Listing
-                deviceName = new ArrayList<String>();
-                deviceAddress = new ArrayList<String>();
-                //Toast.makeText(getContext(), "TEST: " + deviceName.size() + " " + deviceAddress.size(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getContext(), DeviceScanActivity.class);
+                startActivity(intent);
                 break;
             case R.id.wifi_scan:
                 Toast.makeText(getContext(), "Under Construction", Toast.LENGTH_SHORT).show();
