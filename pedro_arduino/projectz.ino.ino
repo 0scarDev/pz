@@ -2,6 +2,7 @@
 #include <Servo.h>
 #include <EEPROM.h>
 #include <string.h>
+#include <Stepper.h>
 
 #define MON (1<<0)
 #define TUE (1<<1)
@@ -25,6 +26,8 @@ struct sched_entry {
   unsigned int motor_val; /* 0 - 65535 */
 } sched_cache[SCHED_NMEMB];
 
+Stepper stepper(500, 8, 10, 9, 11);
+
 
 SoftwareSerial mySerial(2, 3); // RX, TX
 
@@ -38,7 +41,7 @@ bool awake = false;
 int timer;
 char cmd_buffer[128];
 
-unsigned long last_time;
+unsigned long last_time = 0L;
 int hhsm = 0x420f; /* half hours since monday 00:00. rolls over to 0 every monday 00:00 */
 /* 0x420f means it hasn't been initialized. */
 /* NO DST HANDLING! */
@@ -162,7 +165,14 @@ void parser()
   byte nread = mySerial.readBytesUntil('\n', cmd_buffer, 127);
   cmd_buffer[nread] = '\0';
   char *cmd_buf = cmd_buffer;
+  Serial.print("Bluetooth RECV<");
+  Serial.print(cmd_buf);
+  Serial.println(">");
   char *cmd = strsep(&cmd_buf, " ");
+  Serial.print("command arguments <");
+  Serial.print(cmd_buf);
+  Serial.println(">");
+  Serial.print("command <"); Serial.print(cmd); Serial.println(">");
   if(strcmp(cmd, "RESCHED") == 0){
     resched();
     return;
@@ -202,6 +212,9 @@ void parser()
     }
 
     sched_add_entry(days_active, h, m, mv);
+  }
+  if(strcmp(cmd, "STEP") == 0){
+    stepper.step(atoi(cmd_buf));
   }
   if(strcmp(cmd, "SETTIME") == 0){
     
