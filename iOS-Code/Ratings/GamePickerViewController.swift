@@ -103,7 +103,7 @@ var selectedDay = [Bool](count: 7, repeatedValue: false)
         cell?.accessoryType = .None
     }
     
-      print(selectedDay)
+     // print(selectedDay)
     //cell?.accessoryType = .Checkmark
   }
   
@@ -128,7 +128,7 @@ var selectedDay = [Bool](count: 7, repeatedValue: false)
     }
     let stringRep = strA.joinWithSeparator(", ") // "Sunday, Monday, Tuesday"
     selectedGame = stringRep
-    print(stringRep)
+   // print(stringRep)
 
     
    

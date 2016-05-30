@@ -36,11 +36,64 @@ class PlayersViewController: UITableViewController {
     return players.count
   }
   
+    // ADD IBACTION FOR THE SYNC BUTTON HERE.
+    @IBAction func Sync(sender: UIButton) {
+        
+        
+        
+        //client.send(str: message)
+        var str:String = ""
+        var alldates:String = ""
+        for everyData in players{
+             // small parser... converting mo, tu... m,t...
+         alldates = ""
+            if(everyData.game!.rangeOfString("Su") != nil){
+                alldates = appendHelper(alldates, str2: "U")
+            }
+            if(everyData.game!.rangeOfString("Mo") != nil){
+                alldates = appendHelper(alldates, str2: "M")
+            }
+            if(everyData.game?.rangeOfString("Tu") != nil){
+                alldates = appendHelper(alldates, str2: "T")
+            }
+            if(everyData.game?.rangeOfString("We") != nil){
+                alldates = appendHelper(alldates, str2: "W")
+            }
+            if(everyData.game?.rangeOfString("Th") != nil){
+                alldates = appendHelper(alldates, str2: "R")
+            }
+            if(everyData.game?.rangeOfString("Fr") != nil){
+                alldates = appendHelper(alldates, str2: "F")
+            }
+            if(everyData.game?.rangeOfString("Sa") != nil){
+                alldates = appendHelper(alldates, str2: "S")
+            }
+            
+            str = "\(alldates) \(everyData.name!) \(String(everyData.pos))"
+            print(str)
+        }
+        
+    }
+    
+    func appendHelper(str1:String, str2:String) -> String{
+    return str1 + str2
+    }
+    
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
     -> UITableViewCell {
+        /*
+         THIS IS THE SCENE WHERE AUTOMATIONS ARE LOADED AND DISPLAYED IN THE VIEW.
+         NOTE: WHEN ADDING A NEW INSTANCE... IT WILL CALL THIS FUNCTION TO RELOAD THE NEW DATA. THEREFORE,
+         YOU MUST ADD THE NEW DATA TO THE PLIST.. OR IT WONT LOAD HERE.
+         
+         THINGS TO DO HERE:
+         1) LOAD DATA FROM PLIST THEN ASSIGN IT TO players VARIABLE
+         
+         */
       let cell = tableView.dequeueReusableCellWithIdentifier("PlayerCell", forIndexPath: indexPath)
         as! PlayerCell
-      
+    //  print("1: \(players[0].game)")
+     //   print("3: \(players[0].pos)")
       let player = players[indexPath.row] as Player
       cell.player = player
       return cell

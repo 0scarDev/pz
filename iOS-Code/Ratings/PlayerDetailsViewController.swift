@@ -29,17 +29,29 @@ class PlayerDetailsViewController: UITableViewController {
     
   //  let dateFormatter = NSDateFormatter()
     
-    var stringDate:String?
+    var stringDate:String = "00:00"
     
     @IBAction func timePicker(sender: UIDatePicker) {
         
+        var dateAMPM:String = ""
         let userDateFormatter = NSDateFormatter()
         userDateFormatter.dateStyle = .NoStyle
         userDateFormatter.timeStyle = .ShortStyle
         //24 HOUR TIME: userDateFormatter.dateFormat = "HH:mm"
 
         userDateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: -25200)
-        stringDate = userDateFormatter.stringFromDate(sender.date)
+        dateAMPM = userDateFormatter.stringFromDate(sender.date)
+        
+        // converting to 24:00 fromat
+        
+        let dateAsString = dateAMPM
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        let date = dateFormatter.dateFromString(dateAsString)
+        
+        dateFormatter.dateFormat = "HH:mm"
+        stringDate = dateFormatter.stringFromDate(date!)
+        
         print(stringDate)
     }
     
@@ -51,7 +63,7 @@ class PlayerDetailsViewController: UITableViewController {
     
   var player:Player?
   
-  var game:String = "asdfasdfasdf" {
+  var game:String = "" {
     didSet {
       detailLabel.text? = game
     }
@@ -82,9 +94,21 @@ class PlayerDetailsViewController: UITableViewController {
 //        strBuild = stringDate!.appendContentsOf(floatPos.description)
 //        print(strBuild)
         //strBuild = striBuild.appead(floatPos.description)
+          //player = Player(name: nameTextField.text, game:game)
+        
+        
+  /*THINGS TO ADD:
+         // IF GOOD DATA... DO SOMETHING
+         // IF NOT GOOD DATA... DONT DO ANYTHING
+         
+         */
+        
+        // good one
+        if(game != ""){
         player = Player(name: stringDate, game:game, pos: floatPos)
-
-      //player = Player(name: nameTextField.text, game:game)
+        }
+    
+ 
     }
     if segue.identifier == "PickGame" {
       if let gamePickerViewController = segue.destinationViewController as? GamePickerViewController {

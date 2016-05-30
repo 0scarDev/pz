@@ -23,8 +23,11 @@
 import Foundation
 //Set up sample data
 
-let playersData = [
+/*let playersData = [
     Player(name: "Work", game:"Mo", pos: 0),
     Player(name: "School", game: "Tu", pos: 50),
     Player(name: "5:00 6:00 23:30", game: "Tu", pos: 100),
-    Player(name: "Nap", game: "We", pos: 25) ]
+    Player(name: "Nap", game: "We", pos: 25) ]*/
+
+let playersData = [
+ Player(name: "23:00", game:"Mo", pos: 0)]

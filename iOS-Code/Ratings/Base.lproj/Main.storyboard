@@ -206,6 +206,9 @@
                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="Sync:" destination="xNq-fa-oDe" eventType="touchUpInside" id="gD5-OC-38a"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YFF-I1-BEt">
@@ -217,7 +220,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LaV-hn-5hX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="834.5" y="73.5"/>
+            <point key="canvasLocation" x="874.5" y="115.5"/>
         </scene>
         <!--Add automation-->
         <scene sceneID="TM2-sT-NCJ">
@@ -249,10 +252,10 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="ep2-hq-JIX">
+                                                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ep2-hq-JIX">
                                                     <rect key="frame" x="-6" y="-86" width="387" height="216"/>
-                                                    <date key="date" timeIntervalSinceReferenceDate="486264122.37164003">
-                                                        <!--2016-05-30 01:22:02 +0000-->
+                                                    <date key="date" timeIntervalSinceReferenceDate="486241200.37164003">
+                                                        <!--2016-05-29 19:00:00 +0000-->
                                                     </date>
                                                     <connections>
                                                         <action selector="timePicker:" destination="dmQ-Yv-Qon" eventType="valueChanged" id="3Qq-GP-7wI"/>
