@@ -69,7 +69,7 @@ class PlayersViewController: UITableViewController {
                 alldates = appendHelper(alldates, str2: "S")
             }
             
-            str = "\(alldates) \(everyData.name!) \(String(everyData.pos))"
+            str = "\(alldates) \(everyData.name!) \(String(Int(everyData.pos)))"
             print(str)
         }
         
