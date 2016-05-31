@@ -11,6 +11,10 @@ void setup()
   Serial.begin(9600);
   esp8266.begin(9600); // your esp's baud rate might be different
   servo.attach(7);
+  delay(3);
+  esp8266.print("AT\r\n");
+  esp8266.print("AT+CIPMUX=1\r\n");
+  esp8266.print("AT+CIPSERVER=1,1001\r\n");
 }
  
 void loop() { // run over and over
@@ -19,9 +23,7 @@ void loop() { // run over and over
   //Serial.write(esp8266.read());
   }
   if (Serial.available()) {
-   // byte in = Serial.read();
-   // esp8266.write((char)in); 
-  esp8266.write(Serial.read());
+    esp8266.write(Serial.read());
   }
 }
 
@@ -42,13 +44,15 @@ void parser()
     strsep(&cmd_buf, ":");
     if(cmd_buf != NULL){
       cccmd_parser(cmd_buf);
+    }else{
+      Serial.println("ERROR: something wrong with IPD...");
     }
   }
 }
 
 void cccmd_parser(char *cmd_buf)
 {
-  Serial.print("wifi RECV<");
+  Serial.print("wifi RECV COMMAND<");
   Serial.print(cmd_buf);
   Serial.println(">");
   char *cmd = strsep(&cmd_buf, " ");
