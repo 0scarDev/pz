@@ -14,14 +14,16 @@ import Darwin.C
 let client:TCPClient = TCPClient(addr: "192.168.4.1 ", port: 1001)
 
 class ViewController: UIViewController {
-    var isConnected = false
 //var manualViewController:ManualViewController?
     
     @IBAction func wifiBut(sender: UIButton) {
         let (success,errmsg)=client.connect(timeout: 1)
             if success{
                 print("Successfully connected via WiFi")
-                isConnected = true
+                client.connected = true
+                //update time of arduino
+                
+                //move to next scene
                 self.performSegueWithIdentifier("asdf", sender: nil)
                 
             }else{
@@ -31,27 +33,62 @@ class ViewController: UIViewController {
     
     
     @IBAction func blueBut(sender: UIButton) {
+        serial.startScanning()
+        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(ViewController.connectTimeOut), userInfo: nil, repeats: false)
         
     }
     
+    func connectTimeOut(){
+        serial.stopScanning()
+        if serial.isConnected() {
+            //update time of arduino
+            
+            // move to next scene
+            self.performSegueWithIdentifier("asdf", sender: nil)
+        }
+        else{
+            print("Bluetooth failed to connect")
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // initialize bluetooth
+        serial
         
+        updateArduinoTime()
         
-        let buttonMINUS = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        buttonMINUS.setTitle("-", forState: .Normal)
-        buttonMINUS.center = CGPoint(x: view.center.x - 100, y: view.center.y + 250)
-        buttonMINUS.backgroundColor = UIColor.blackColor()
-        buttonMINUS.addTarget(self, action: #selector(ViewController.ACCLeft), forControlEvents: .TouchDown)
-        self.view.addSubview(buttonMINUS)
+    }
+    
+    func updateArduinoTime(){
+        let date = NSDate()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        // this one is for hh:mm
+        let str = dateFormatter.stringFromDate(date)
+       // print(str)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let wday = dateFormatter.stringFromDate(date)
         
+        let weekday = getDayOfWeek(wday)
+        print("weekday: \(String(weekday!)) and Time: \(str)")
+    }
+    
+    func getDayOfWeek(today:String)->Int? {
         
-        
-        
-        
+        let formatter  = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        if let todayDate = formatter.dateFromString(today) {
+            let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+            let myComponents = myCalendar.components(.Weekday, fromDate: todayDate)
+            let weekDay = myComponents.weekday
+            return weekDay
+        } else {
+            return nil
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,41 +96,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func ACCLeft(){
-        //connect
-        let message = "it's working :)"
-        
-        if (!isConnected){
-            let (success,errmsg)=client.connect(timeout: 1)
-            if success{
-                isConnected = true
-                //send
-                // let (success,errmsg)=client.send(data: message.dataUsingEncoding(NSUTF8StringEncoding)!)
-                let (success,errmsg)=client.send(str: message)
-                if success{
-                    
-                    //receive
-                    /* let data=client.read(1024*10)
-                     if let d=data{
-                     if let str=String(bytes: d, encoding: NSUTF8StringEncoding){
-                     print(str)
-                     }
-                     }
-                     */}else{
-                    print(errmsg)
-                }
-            }else{
-                print(errmsg)
-            }
-            print("done")
-        }
-            
-        else{
-            
-            client.send(str: message)
-        }
-        
-    }
     
 }
 

@@ -70,7 +70,17 @@ class PlayersViewController: UITableViewController {
             }
             
             str = "\(alldates) \(everyData.name!) \(String(Int(everyData.pos)))"
-            print(str)
+           // print(str)
+      
+            // send wifi
+            if(serial.isConnected()){
+                if let bleService = serial.bleService {
+                    bleService.sendMessageToDevice(str)
+                }
+            }
+            else if(client.isConnected()){
+        client.send(str: str)
+            }
         }
         
     }
@@ -92,8 +102,6 @@ class PlayersViewController: UITableViewController {
          */
       let cell = tableView.dequeueReusableCellWithIdentifier("PlayerCell", forIndexPath: indexPath)
         as! PlayerCell
-    //  print("1: \(players[0].game)")
-     //   print("3: \(players[0].pos)")
       let player = players[indexPath.row] as Player
       cell.player = player
       return cell

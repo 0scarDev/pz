@@ -8,7 +8,7 @@
         <!--Manual-->
         <scene sceneID="fhQ-Ic-tQb">
             <objects>
-                <viewController id="bMG-md-rfZ" sceneMemberID="viewController">
+                <viewController id="bMG-md-rfZ" customClass="ManualViewController" customModule="Ratings" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NGv-v9-ud3"/>
                         <viewControllerLayoutGuide type="bottom" id="Ikk-Ki-OxI"/>
@@ -23,6 +23,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Na4-jT-783">
                                 <rect key="frame" x="43" y="70" width="92" height="30"/>
                                 <state key="normal" title="Counterclock"/>
+                                <connections>
+                                    <action selector="CounterClock:" destination="bMG-md-rfZ" eventType="touchUpInside" id="v9B-fD-k7w"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gah-0Z-n20">
                                 <rect key="frame" x="317" y="70" width="30" height="30"/>
@@ -33,14 +36,30 @@
                                     <constraint firstAttribute="width" constant="149" id="vL8-52-YOV"/>
                                 </constraints>
                                 <state key="normal" title="Set max counterclock"/>
+                                <connections>
+                                    <action selector="SetMaxCounter:" destination="bMG-md-rfZ" eventType="touchUpInside" id="bYC-ar-dtY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QtJ-Bj-LXL">
                                 <rect key="frame" x="285" y="70" width="70" height="30"/>
                                 <state key="normal" title="Clockwise"/>
+                                <connections>
+                                    <action selector="ClockWise:" destination="bMG-md-rfZ" eventType="touchUpInside" id="bSs-BY-4vF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2N-Tk-imm">
                                 <rect key="frame" x="228" y="260" width="127" height="30"/>
                                 <state key="normal" title="Set max clockwise"/>
+                                <connections>
+                                    <action selector="SetMaxClockWise:" destination="bMG-md-rfZ" eventType="touchUpInside" id="SvN-Q5-eLj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrY-jF-uIS">
+                                <rect key="frame" x="148" y="418" width="78" height="30"/>
+                                <state key="normal" title="Disconnect"/>
+                                <connections>
+                                    <action selector="DisconnectAction:" destination="bMG-md-rfZ" eventType="touchUpInside" id="oN5-tn-fOa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,6 +79,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Manual" image="second" id="6Vk-Ho-IOR"/>
+                    <connections>
+                        <segue destination="sdZ-Jk-y7s" kind="show" identifier="disconnectBack" id="ALg-Qx-f74"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uL8-pM-fED" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -74,18 +96,18 @@
                         <viewControllerLayoutGuide type="bottom" id="km1-Tg-Afq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="INq-kP-aWW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gb-kq-vvp">
-                                <rect key="frame" x="118" y="285" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gb-kq-vvp">
+                                <rect key="frame" x="114" y="286" width="30" height="30"/>
                                 <state key="normal" title="Wifi"/>
                                 <connections>
                                     <action selector="wifiBut:" destination="sdZ-Jk-y7s" eventType="touchUpInside" id="Qap-a3-KI4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJI-h9-7cW">
-                                <rect key="frame" x="376" y="285" width="67" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJI-h9-7cW">
+                                <rect key="frame" x="151" y="286" width="67" height="30"/>
                                 <state key="normal" title="Bluetooth"/>
                                 <connections>
                                     <action selector="blueBut:" destination="sdZ-Jk-y7s" eventType="touchUpInside" id="u2p-5m-q6b"/>
@@ -113,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thW-G4-FD8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-736" y="547"/>
+            <point key="canvasLocation" x="-860" y="571"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="z1L-OR-RdH">
