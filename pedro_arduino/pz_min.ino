@@ -38,7 +38,6 @@ void parser()
     *findcr = '\0';
   }
   char *cmd_buf = cmd_buffer;
-  Serial.print(">");
   Serial.println(cmd_buf);
   if(strncmp(cmd_buf, "+IPD,", 4)){
     strsep(&cmd_buf, ":");
