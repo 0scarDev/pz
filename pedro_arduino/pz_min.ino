@@ -11,9 +11,12 @@ void setup()
   Serial.begin(9600);
   esp8266.begin(9600); // your esp's baud rate might be different
   servo.attach(7);
-  delay(3);
+  delay(3000);
+  Serial.println("Starting");
   esp8266.print("AT\r\n");
+  delay(100);
   esp8266.print("AT+CIPMUX=1\r\n");
+  delay(100);
   esp8266.print("AT+CIPSERVER=1,1001\r\n");
 }
  
