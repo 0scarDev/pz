@@ -97,8 +97,11 @@ void setup() {
 void loop() { // run over and over
 
   /* mobile sending info to arduino */
-  if (Serial.available()) {
+  if (mySerial.available()) {
     parser();
+  }
+  if (Serial.available()){
+    mySerial.write(Serial.read());
   }
 
   /* This can be used to send info to mobile */
@@ -188,7 +191,18 @@ void parser()
   char *findcr = strchr(cmd_buffer, '\r');
   if(findcr != NULL)
     *findcr = '\0';
-  Serial.print("Bluetooth RECV<");
+  Serial.println(cmd_buf);
+  if(strncmp(cmd_buf, "+IPD,", 4)){
+    strsep(&cmd_buf, ":");
+    if(cmd_buf != NULL){
+      cmd_parser(cmd_buf);
+    }
+  }
+}
+
+void cmd_parser(char *cmd_buf)
+{
+  Serial.print("Device RECV<");
   Serial.print(cmd_buf);
   Serial.println(">");
   char *cmd = strsep(&cmd_buf, " ");
