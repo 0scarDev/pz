@@ -106,6 +106,7 @@ class BTService: NSObject, CBPeripheralDelegate {
             var mutablePos = position
             let data = NSData(bytes: &mutablePos, length: sizeof(UInt8))
             self.peripheral?.writeValue(data, forCharacteristic: positionCharacteristic, type: CBCharacteristicWriteType.WithoutResponse)
+            
         }
     }
     
@@ -114,6 +115,7 @@ class BTService: NSObject, CBPeripheralDelegate {
     func sendMessageToDevice(message: String) {
             if let characteristic = positionCharacteristic {
                 self.peripheral?.writeValue(message.dataUsingEncoding(NSUTF8StringEncoding)!, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithoutResponse)
+                
             }
 
         
