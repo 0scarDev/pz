@@ -26,9 +26,9 @@ import UIKit
 struct Player {
   var name: String?
   var game: String?
-  var pos: Float
+  var pos: Int
   
-    init(name: String?, game: String?, pos: Float) {
+    init(name: String?, game: String?, pos: Int) {
         self.name = name
         self.game = game
         self.pos = pos

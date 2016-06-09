@@ -113,8 +113,9 @@ class BTService: NSObject, CBPeripheralDelegate {
     // send string
     
     func sendMessageToDevice(message: String) {
+     let customizeMSG = message + "\n"
             if let characteristic = positionCharacteristic {
-                self.peripheral?.writeValue(message.dataUsingEncoding(NSUTF8StringEncoding)!, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithoutResponse)
+                self.peripheral?.writeValue(customizeMSG.dataUsingEncoding(NSUTF8StringEncoding)!, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithoutResponse)
                 
             }
 

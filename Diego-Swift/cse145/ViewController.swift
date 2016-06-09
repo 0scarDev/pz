@@ -96,31 +96,31 @@ class ViewController: UIViewController {
     @IBAction func ACCRight(){
         if speed > 0 {
         upgradeLabel(--speed)
-        self.sendCommand("SERV", value: String(speed))
+        self.sendCommand("SERV ", value: String(speed))
         }
         }
     
     @IBAction func AutoLeft(){
-    self.sendCommand("SERV", value: String(130))
+    self.sendCommand("SERV ", value: String(130))
             upgradeLabel(130)
     }
     
     @IBAction func AutoRight(){
-        self.sendCommand("SERV", value: String(50))
+        self.sendCommand("SERV ", value: String(50))
         upgradeLabel(50)
     }
     
     @IBAction func Stop(){
-        self.sendCommand("SERV", value: String(94))
+        self.sendCommand("SERV ", value: String(94))
         upgradeLabel(94)
     }
     
     @IBAction func ManuLeft(sender: UIButton){
-        self.sendCommand("SERV", value: String(130))
+        self.sendCommand("SERV ", value: String(130))
        upgradeLabel(130)
     }
     @IBAction func ManuRight(sender: UIButton){
-        self.sendCommand("SERV", value: String(50))
+        self.sendCommand("SERV ", value: String(50))
         upgradeLabel(50)
     }
     

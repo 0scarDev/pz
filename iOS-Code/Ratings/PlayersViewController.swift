@@ -39,7 +39,9 @@ class PlayersViewController: UITableViewController {
     // ADD IBACTION FOR THE SYNC BUTTON HERE.
     @IBAction func Sync(sender: UIButton) {
         
-        
+        let alert:UIAlertController
+        let okayButton = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+        var isSent:Bool = true
         
         //client.send(str: message)
         var str:String = ""
@@ -48,40 +50,57 @@ class PlayersViewController: UITableViewController {
              // small parser... converting mo, tu... m,t...
          alldates = ""
             if(everyData.game!.rangeOfString("Su") != nil){
-                alldates = appendHelper(alldates, str2: "U")
+                alldates = appendHelper(alldates, str2: "0") //
             }
             if(everyData.game!.rangeOfString("Mo") != nil){
-                alldates = appendHelper(alldates, str2: "M")
+                alldates = appendHelper(alldates, str2: "1")
             }
             if(everyData.game?.rangeOfString("Tu") != nil){
-                alldates = appendHelper(alldates, str2: "T")
+                alldates = appendHelper(alldates, str2: "2")
             }
             if(everyData.game?.rangeOfString("We") != nil){
-                alldates = appendHelper(alldates, str2: "W")
+                alldates = appendHelper(alldates, str2: "3")
             }
             if(everyData.game?.rangeOfString("Th") != nil){
-                alldates = appendHelper(alldates, str2: "R")
+                alldates = appendHelper(alldates, str2: "4")
             }
             if(everyData.game?.rangeOfString("Fr") != nil){
-                alldates = appendHelper(alldates, str2: "F")
+                alldates = appendHelper(alldates, str2: "5")
             }
             if(everyData.game?.rangeOfString("Sa") != nil){
-                alldates = appendHelper(alldates, str2: "S")
+                alldates = appendHelper(alldates, str2: "6")
             }
             
-            str = "\(alldates) \(everyData.name!) \(String(Int(everyData.pos)))"
-           // print(str)
-      
+            str = "SCHED \(alldates) \(everyData.name!) \(String(Int(everyData.pos)))"
+            print(str)
+    //  print("To Send: \(str)")
             // send wifi
             if(serial.isConnected()){
                 if let bleService = serial.bleService {
                     bleService.sendMessageToDevice(str)
+                    
                 }
             }
             else if(client.isConnected()){
         client.send(str: str)
             }
+            else{
+                isSent = false
+                print("To Send: \(str)")
+            }
         }
+    
+        var title:String?
+        if(isSent){
+      title = "Success"
+        }
+        else{
+            title = "Failed"
+        }
+      alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(okayButton)
+        presentViewController(alert, animated: true, completion: nil)
+
         
     }
     
@@ -113,7 +132,7 @@ class PlayersViewController: UITableViewController {
   
   @IBAction func savePlayerDetail(segue:UIStoryboardSegue) {
     
-    print("b")
+    //print("b")
     if let playerDetailsViewController = segue.sourceViewController as? PlayerDetailsViewController {
       
       //add the new player to the players array

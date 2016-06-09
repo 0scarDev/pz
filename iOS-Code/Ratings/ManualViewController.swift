@@ -10,28 +10,29 @@ import UIKit
 
 class ManualViewController: UIViewController {
 
+    var amountSlide:Int = 0
     
     @IBAction func CounterClock(sender: UIButton) {
         
-        let str:String = "OPEN 5"
+        let str:String = "COUT \(String(amountSlide))"
         
         sendToArduino(str)
     }
     
     @IBAction func ClockWise(sender: UIButton) {
-        let str:String = "CLOSE 5"
+        let str:String = "CLOC \(String(amountSlide))"
         
         sendToArduino(str)
     }
  
     @IBAction func SetMaxCounter(sender: UIButton) {
-        let str:String = "input msg here"
+        let str:String = "SMIN"
         
         sendToArduino(str)
     }
     
     @IBAction func SetMaxClockWise(sender: UIButton) {
-        let str:String = "input msg here"
+        let str:String = "SMAX"
         
         sendToArduino(str)
     }
@@ -45,6 +46,11 @@ class ManualViewController: UIViewController {
             serial.disconnect()
         }
         self.performSegueWithIdentifier("disconnectBack", sender: nil)
+    }
+    
+    @IBAction func sliderValueHasChanged(sender: UISlider) {
+        print(sender.value)
+        amountSlide = Int(sender.value)
     }
     
     func sendToArduino(str:String){

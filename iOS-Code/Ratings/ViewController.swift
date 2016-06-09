@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         serial.stopScanning()
         if serial.isConnected() {
             //update time of arduino
-            
+             updateArduinoTime()
             // move to next scene
             self.performSegueWithIdentifier("asdf", sender: nil)
         }
@@ -59,22 +59,34 @@ class ViewController: UIViewController {
         // initialize bluetooth
         serial
         
-        updateArduinoTime()
+       
         
     }
     
     func updateArduinoTime(){
         let date = NSDate()
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.dateFormat = "HH:mm:ss"
         // this one is for hh:mm
         let str = dateFormatter.stringFromDate(date)
        // print(str)
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let wday = dateFormatter.stringFromDate(date)
         
-        let weekday = getDayOfWeek(wday)
-        print("weekday: \(String(weekday!)) and Time: \(str)")
+        let weekday = getDayOfWeek(wday)! - 1
+      //  print("weekday: \(String(weekday!)) and Time: \(str)")
+        
+      //  let msg:String = "SETT \(String(weekday)) \(str)"
+        let msg:String = "SETT \(String(weekday)) 9:26:00"
+        print(msg)
+        // command to send
+        if(serial.isConnected()){
+  
+            if let svc = serial.bleService{
+           
+                svc.sendMessageToDevice(msg)
+            }
+        }
     }
     
     func getDayOfWeek(today:String)->Int? {

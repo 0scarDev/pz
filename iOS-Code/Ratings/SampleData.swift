@@ -29,5 +29,4 @@ import Foundation
     Player(name: "5:00 6:00 23:30", game: "Tu", pos: 100),
     Player(name: "Nap", game: "We", pos: 25) ]*/
 
-let playersData = [
- Player(name: "23:00", game:"Mo", pos: 0)]
+let playersData = [Player]()

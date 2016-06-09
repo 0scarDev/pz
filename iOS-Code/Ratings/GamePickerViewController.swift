@@ -108,7 +108,7 @@ var selectedDay = [Bool](count: 7, repeatedValue: false)
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    print("1")
+    //print("1")
 
     
    /* if segue.identifier == "SaveSelectedGame" {

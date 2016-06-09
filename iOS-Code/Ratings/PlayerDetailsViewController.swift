@@ -73,12 +73,12 @@ class PlayerDetailsViewController: UITableViewController {
   @IBOutlet weak var detailLabel: UILabel!
   
   required init?(coder aDecoder: NSCoder) {
-    print("init PlayerDetailsViewController")
+   // print("init PlayerDetailsViewController")
     super.init(coder: aDecoder)
   }
   
   deinit {
-    print("deinit PlayerDetailsViewController")
+   // print("deinit PlayerDetailsViewController")
   }
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -89,7 +89,7 @@ class PlayerDetailsViewController: UITableViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "SavePlayerDetail" {
-        print("a")
+      //  print("a")
                 
 //        strBuild = stringDate!.appendContentsOf(floatPos.description)
 //        print(strBuild)
@@ -105,12 +105,11 @@ class PlayerDetailsViewController: UITableViewController {
         
         // good one
         if(game != ""){
-        player = Player(name: stringDate, game:game, pos: floatPos)
+        player = Player(name: stringDate, game:game, pos: Int(floatPos))
         }
-    
  
     }
-    if segue.identifier == "PickGame" {
+    if segue.identifier == "PickGame"{
       if let gamePickerViewController = segue.destinationViewController as? GamePickerViewController {
         gamePickerViewController.selectedGame = game
       }
@@ -119,7 +118,7 @@ class PlayerDetailsViewController: UITableViewController {
   
   //Unwind segue
   @IBAction func unwindWithSelectedGame(segue:UIStoryboardSegue) {
-    print("2")
+  //  print("2")
    /* if let gamePickerViewController = segue.sourceViewController as? GamePickerViewController,
       selectedGame = gamePickerViewController.selectedGame {
         game = selectedGame
