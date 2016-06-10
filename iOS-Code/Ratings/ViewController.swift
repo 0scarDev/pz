@@ -11,7 +11,7 @@ import UIKit
 import Darwin.C
 
 //socket
-let client:TCPClient = TCPClient(addr: "192.168.4.1 ", port: 1001)
+let client:TCPClient = TCPClient(addr: "172.20.10.4", port: 80)
 
 class ViewController: UIViewController {
 //var manualViewController:ManualViewController?
@@ -76,8 +76,8 @@ class ViewController: UIViewController {
         let weekday = getDayOfWeek(wday)! - 1
       //  print("weekday: \(String(weekday!)) and Time: \(str)")
         
-      //  let msg:String = "SETT \(String(weekday)) \(str)"
-        let msg:String = "SETT \(String(weekday)) 9:26:00"
+        let msg:String = "SETT \(String(weekday)) \(str)"
+      //  let msg:String = "SETT \(String(weekday)) 9:26:00"
         print(msg)
         // command to send
         if(serial.isConnected()){

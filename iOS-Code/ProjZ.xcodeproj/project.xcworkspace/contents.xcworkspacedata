@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Ratings.xcodeproj">
+      location = "self:/Users/diego/Desktop/untitled folder/game/cse145/iOS-Code/ProjZ.xcodeproj">
    </FileRef>
 </Workspace>

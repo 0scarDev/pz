@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "824404871BA2816A005DDDD7"
-               BuildableName = "Ratings.app"
-               BlueprintName = "Ratings"
-               ReferencedContainer = "container:Ratings.xcodeproj">
+               BuildableName = "ProjZ.app"
+               BlueprintName = "ProjZ"
+               ReferencedContainer = "container:ProjZ.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "824404871BA2816A005DDDD7"
-            BuildableName = "Ratings.app"
-            BlueprintName = "Ratings"
-            ReferencedContainer = "container:Ratings.xcodeproj">
+            BuildableName = "ProjZ.app"
+            BlueprintName = "ProjZ"
+            ReferencedContainer = "container:ProjZ.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "824404871BA2816A005DDDD7"
-            BuildableName = "Ratings.app"
-            BlueprintName = "Ratings"
-            ReferencedContainer = "container:Ratings.xcodeproj">
+            BuildableName = "ProjZ.app"
+            BlueprintName = "ProjZ"
+            ReferencedContainer = "container:ProjZ.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "824404871BA2816A005DDDD7"
-            BuildableName = "Ratings.app"
-            BlueprintName = "Ratings"
-            ReferencedContainer = "container:Ratings.xcodeproj">
+            BuildableName = "ProjZ.app"
+            BlueprintName = "ProjZ"
+            ReferencedContainer = "container:ProjZ.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
