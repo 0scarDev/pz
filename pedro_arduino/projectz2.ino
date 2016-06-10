@@ -27,8 +27,10 @@ struct sched_entry {
 } sched_cache[SCHED_NMEMB];
 
 
-//SoftwareSerial mySerial(2, 3); // RX, TX
+SoftwareSerial mySerial(2, 3); // RX, TX
 
+unsigned long openin_time = 0;
+unsigned long closein_time = 0;
 int sched_cache_used = 0;
 
 Servo myservo;
@@ -82,7 +84,7 @@ void setup() {
   pinMode(2, INPUT);
   pinMode(3, OUTPUT);
   Serial.begin(9600);
-//  mySerial.begin(9600);
+  mySerial.begin(9600);
 
   myservo.attach(7);
   initialize_eeprom();
@@ -95,8 +97,11 @@ void setup() {
 void loop() { // run over and over
 
   /* mobile sending info to arduino */
-  if (Serial.available()) {
+  if (mySerial.available()) {
     parser();
+  }
+  if (Serial.available()){
+    mySerial.write(Serial.read());
   }
 
   /* This can be used to send info to mobile */
@@ -115,6 +120,20 @@ void loop() { // run over and over
     }
   }
   last_time = millis();
+
+  if(openin_time != 0 && millis() >= openin_time){
+    myservo.write(10);
+    delay(5000);
+    myservo.write(92);
+    openin_time = 0;
+    
+  }
+  if(closein_time != 0 && millis() >= closein_time){
+    myservo.write(170);
+    delay(5000);
+    myservo.write(92);
+    closein_time = 0;
+  }
  
 }
 
@@ -166,13 +185,24 @@ void resched()
 
 void parser()
 {
-  byte nread = Serial.readBytesUntil('\n', cmd_buffer, 127);
+  byte nread = mySerial.readBytesUntil('\n', cmd_buffer, 127);
   cmd_buffer[nread] = '\0';
   char *cmd_buf = cmd_buffer;
   char *findcr = strchr(cmd_buffer, '\r');
   if(findcr != NULL)
     *findcr = '\0';
-  Serial.print("Bluetooth RECV<");
+  Serial.println(cmd_buf);
+  if(strncmp(cmd_buf, "+IPD,", 4)){
+    strsep(&cmd_buf, ":");
+    if(cmd_buf != NULL){
+      cmd_parser(cmd_buf);
+    }
+  }
+}
+
+void cmd_parser(char *cmd_buf)
+{
+  Serial.print("Device RECV<");
   Serial.print(cmd_buf);
   Serial.println(">");
   char *cmd = strsep(&cmd_buf, " ");
@@ -249,11 +279,19 @@ void parser()
 
     sched_add_entry(days_active, h, m, mv);
   }
-  if(strcmp(cmd, "STEP") == 0 || strcmp(cmd, "SERV") == 0){
+  if(strstr(cmd, "STEP") != NULL || strstr(cmd, "SERV") != NULL){
     Serial.println(atoi(cmd_buf));
     myservo.write(atoi(cmd_buf));
   }
   if(strcmp(cmd, "SETTIME") == 0){
     Serial.println(cmd_buf);
+  }
+  if(strstr(cmd, "OPEN") == 0){
+    long secs_to_open = atol(cmd_buf);
+    openin_time = secs_to_open*1000 + millis();
+  }
+  if(strstr(cmd, "CLOSE") == 0){
+    long secs_to_close = atol(cmd_buf);
+    closein_time = secs_to_close*1000 + millis();
   }
 }
