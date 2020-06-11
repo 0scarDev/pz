@@ -1,2 +1,2 @@
-# pz
-CSE 145, Spring 2016
+# Project Z
+Bluetooth controlled blinds controller via Arduino and iOS app
